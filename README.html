@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>Minimal Pomo Timer</title>
+            <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only],
+.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+            
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
+        
+        </head>
+        <body class="vscode-body vscode-light">
+            <h1 id="minimal-pomo-timer">Minimal Pomo Timer</h1>
+<p>Pomodoro Twitch Overlay. I designed this for my co-working stream so that it is automatic and I don't need to set the timer every time. You customize the style, pomodoros and control it using chat commands on stream - shown below.</p>
+<p>This works by installing it onto your PC rather than having it hosted online on streamlabs or streamelements since that would be lighter on the PC and for example sounds when the timer finishes are less likely to get affected when you have a slow laptop/PC (used to have a laptop before PC and suffered from this).</p>
+<p>If streamelements is responding to the timer command, the streamelements timer command can be disabled here: <a href="https://streamelements.com/dashboard/bot/commands/default">https://streamelements.com/dashboard/bot/commands/default</a></p>
+<h1 id="installation">Installation</h1>
+<ol>
+<li>
+<p>Download the zip to your desired location
+<img src="https://user-images.githubusercontent.com/35163331/165662709-b55ff46a-9df3-443f-b1f4-b741dd322430.png" alt="image"></p>
+</li>
+<li>
+<p>Add a browser source</p>
+</li>
+<li>
+<p>Choose <code>timer.html</code></p>
+</li>
+</ol>
+<p><img src="https://user-images.githubusercontent.com/35163331/165658964-4ee3c16b-e151-4749-a2ec-2a0110f899e7.png" alt="image"></p>
+<ol start="4">
+<li>The sound of the timer needs to limited in OBS using a limiter so that you can control the exact volume you would like it sound on Stream
+<img src="https://user-images.githubusercontent.com/35163331/165692767-5e523627-43e0-4ae5-88b6-7fd76c894a23.png" alt="image">
+<img src="https://user-images.githubusercontent.com/35163331/165692832-f7d1ac58-e0a3-4f7b-8356-2c07493ed806.png" alt="image"></li>
+</ol>
+<h1 id="configuration">Configuration</h1>
+<p>Within the folder, find and open the file called <code>configs.js</code> using <code>notepad</code></p>
+<p>The file should look like this with comments on how to change the default configurations:
+<img src="https://user-images.githubusercontent.com/35163331/165657486-a4660bdf-41e9-4baa-99a4-9aba595e6df6.png" alt="image"></p>
+<p>Channel: channel for which to connect the bot to
+username: username of the bot you which to have connected to this overlay, e.g. I have a separate bot called <code>moh_manager</code> for my channel that is connected to all the overlays.</p>
+<p>For oauth do the following steps:</p>
+<ol>
+<li>Log In to <a href="https://twitchapps.com/tmi/">https://twitchapps.com/tmi/</a></li>
+<li>Copy the token</li>
+<li>Paste into configs</li>
+</ol>
+<p>oauth is a token that acts like a password that only allows the overlay to send messages on behalf of that account.</p>
+<h1 id="how-to-use">How to use</h1>
+<ul>
+<li>!timer start: begins the timer with the defauly configuration</li>
+<li>!timer goal 10: changes the timer goal to 10</li>
+<li>!timer cycle 5: changes the current timer cycle to 5</li>
+<li>!timer skip: skips the current session (either work or break)</li>
+<li>!timer 15:00: changes the time of the current Pomo to 15:00</li>
+<li>!timer 600: changes the time of the pomo to 10:00 (works with seconds)</li>
+<li>!timer add 50: adds 50 seconds to the current time</li>
+<li>!timer sub 50: adds 50 seconds to the current time</li>
+<li>!timer pause</li>
+<li>!timer resume</li>
+<li>!timer reset: clears the timer (also !timer clear)</li>
+</ul>
+<h1 id="configs-for-round-timer">Configs for round timer</h1>
+<p>I recommend copying 1 by 1 just to be sure nothing gets messed up.</p>
+<pre><code class="language-javascript"><span class="hljs-comment">// Styling - required</span>
+<span class="hljs-keyword">const</span> height = <span class="hljs-string">&#x27;250px&#x27;</span>;
+<span class="hljs-keyword">const</span> width = <span class="hljs-string">&#x27;250px&#x27;</span>;
+<span class="hljs-keyword">const</span> backgroundColor = <span class="hljs-string">&#x27;#000000&#x27;</span>; <span class="hljs-comment">// hex only</span>
+<span class="hljs-keyword">const</span> backgroundOpacity = <span class="hljs-number">0.5</span>; <span class="hljs-comment">// 0 to 1 (0 is transparent)</span>
+<span class="hljs-keyword">const</span> backgroundRoundness = <span class="hljs-string">&#x27;100%&#x27;</span>;
+<span class="hljs-keyword">const</span> textColor = <span class="hljs-string">&#x27;white&#x27;</span>; <span class="hljs-comment">//  hex or name</span>
+<span class="hljs-keyword">const</span> fontFamily = <span class="hljs-string">&#x27;Poppins&#x27;</span>; <span class="hljs-comment">// From google fonts: https://fonts.google.com</span>
+<span class="hljs-keyword">const</span> labelFontSize = <span class="hljs-string">&#x27;30px&#x27;</span>;
+<span class="hljs-keyword">const</span> timeFontSize = <span class="hljs-string">&#x27;50px&#x27;</span>;
+<span class="hljs-keyword">const</span> pomoFontSize = <span class="hljs-string">&#x27;30px&#x27;</span>;
+
+<span class="hljs-comment">// Remember to change the height and width when changing these!</span>
+<span class="hljs-keyword">const</span> labelSpaceAbove = <span class="hljs-string">&#x27;0px&#x27;</span>;
+<span class="hljs-keyword">const</span> labelSpaceLeft = <span class="hljs-string">&#x27;auto&#x27;</span>; <span class="hljs-comment">// auto for centered; negative px is left; positive px is right</span>
+<span class="hljs-keyword">const</span> timeSpaceAbove = <span class="hljs-string">&#x27;0px&#x27;</span>; <span class="hljs-comment">// negative is up; positive is down</span>
+<span class="hljs-keyword">const</span> timeSpaceLeft = <span class="hljs-string">&#x27;auto&#x27;</span>; <span class="hljs-comment">// auto for centered; negative px is left; positive px is right</span>
+<span class="hljs-keyword">const</span> cycleSpaceAbove = <span class="hljs-string">&#x27;100px&#x27;</span>; <span class="hljs-comment">// negative is up; positive is down</span>
+<span class="hljs-keyword">const</span> cycleSpaceRight = <span class="hljs-string">&#x27;auto&#x27;</span>; <span class="hljs-comment">// Diff:auto for centered; negative px is right; positive px is left</span>
+
+<span class="hljs-comment">// Remember to change the above values when changing the following one</span>
+<span class="hljs-keyword">const</span> direction = <span class="hljs-string">&#x27;column&#x27;</span>; <span class="hljs-comment">// row or column</span>
+</code></pre>
+<h1 id="contribution">Contribution</h1>
+<p>I made this in a rush and using some code as boiler plate so the code quality is not the best. I am working on refactoring it:)</p>
+<p>Please star the repository on the top right or provide a link back to this page:)</p>
+
+            
+            
+        </body>
+        </html>
